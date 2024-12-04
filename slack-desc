@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+        |-----handy-ruler------------------------------------------------------|
+DownTube: DownTube (yt-dlp DownLoad Helper)
+DownTube:
+DownTube: DownTube is terminal yt-dlp download helper.
+DownTube: Required node in your installation.
+DownTube:
+DownTube:
+DownTube:
+DownTube:
+DownTube:
+DownTube: HomePage: https://github.com/rizitis
+DownTube: Issues: https://chatgpt.com

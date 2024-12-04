@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Red background -->
+  <rect width="512" height="512" fill="red" />
+  <!-- White downward arrow -->
+  <polygon points="256,360 176,240 216,240 216,160 296,160 296,240 336,240" fill="white" />
+</svg>

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+APP=DownTube
+set -e
+
+rm -rf /opt/"$APP" /usr/local/bin/"$APP" /usr/share/applications/"$APP".desktop /usr/share/icons/hicolor/512x512/apps/"$APP".svg
+
+echo "DownTube rest in peace..."
