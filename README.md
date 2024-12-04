@@ -3,6 +3,7 @@
 
 ## Usage
 From terminal: `node DownTube.mjs` <br>
+[video](https://asciinema.org/a/kw6NET0XEbxDbcxIxt4e1Neim)
 
 
 ## Installation 
