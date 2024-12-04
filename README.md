@@ -14,3 +14,7 @@ If you want to install it and run DownTube from your DE menu, run: `sudo bash in
 
 ### THANKS
 Thanks to [greasyfork.org](https://greasyfork.org/en/scripts/500374-generate-youtube-download-commands-for-yt-dlp-terminal/code) and ChatGPT for the code and idea.
+
+
+---
+Slackware users you have everything needed here to create your SlackBuild ;)
