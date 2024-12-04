@@ -8,6 +8,7 @@ From terminal: `node DownTube.mjs` <br>
 
 ## Installation 
 If you want to install it and run DownTube from your DE menu, run: `sudo bash install.sh`
+[video](https://www.youtube.com/watch?v=NMtOQq_aM2g)
 
 ## Uninstall
 `sudo bash UNINSTALL-DOWNTUBE`
