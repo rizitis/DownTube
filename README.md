@@ -5,6 +5,10 @@
 From terminal: `node DownTube.mjs` <br>
 [video](https://asciinema.org/a/kw6NET0XEbxDbcxIxt4e1Neim)
 
+## Required
+- nodejs
+- yt-dlp
+
 
 ## Installation 
 If you want to install it and run DownTube from your DE menu, run: `sudo bash install.sh` <br>
