@@ -20,3 +20,9 @@ Thanks to [greasyfork.org](https://greasyfork.org/en/scripts/500374-generate-you
 
 ---
 Slackware users you have everything needed here to create your SlackBuild ;)
+  - for Debian based disrtos your yt-dlp is bloked and not allowed to work as expected...
+  - to solve this issue you must remove apt installed yt-dlp and install it from gihub in `/usr/local/bin`
+```
+sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+sudo chmod a+rx /usr/local/bin/yt-dlp 
+```
