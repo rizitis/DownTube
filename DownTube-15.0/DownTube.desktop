@@ -2,7 +2,7 @@
 Version=1.0
 Name=YouTube Downloader Helper
 Comment=Make yt-dlp commands easily
-Exec=/usr/local/bin/DownTube
+Exec=/usr/bin/DownTube
 Icon=DownTube
 Terminal=true
 Type=Application

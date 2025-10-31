@@ -4,9 +4,9 @@ import readline from 'readline';
 import { exec } from 'child_process';
 
 // Default configuration
-let folderLocation = '/tmp'; // Default to /tmp if no path is provided.
-let disableViaYtDlp = false; // Set to true to remove " (via yt-dlp)" from filenames.
-let setToTrueToMoveChannelNameToEnd = false; // Set to true to move channel name to the end of the filename.
+let folderLocation = '/tmp';
+let disableViaYtDlp = true;
+let setToTrueToMoveChannelNameToEnd = true;
 
 // Utility functions
 const isSingleOrPlaylistVideo = (url) => url.includes("/watch?v=") || url.includes("/v/");
@@ -14,7 +14,7 @@ const isPlaylist = (url) => url.includes("&list=");
 const isFullChannel = (url) => url.includes("/channel/") || url.includes("/@");
 
 const ytDlpCommand = (url, mode, quality = '', downloadPath) => {
-    let command = "yt-dlp ";
+    let command = "slack-tube ";
     let isSPV = isSingleOrPlaylistVideo(url);
     let isPL = isPlaylist(url);
     let isFullCH = isFullChannel(url);
@@ -26,15 +26,14 @@ const ytDlpCommand = (url, mode, quality = '', downloadPath) => {
         outputFolder += '/%(uploader)s';
     }
 
-    // Define output template
-    let outputTemplate = `${outputFolder}/%(title)s (via yt-dlp).%(ext)s`;
+    let outputTemplate = `${outputFolder}/%(title)s (via slack-tube).%(ext)s`;
     if (!isPL && !isFullCH) {
-        outputTemplate = `${outputFolder}/%(uploader)s - %(title)s (via yt-dlp).%(ext)s`;
+        outputTemplate = `${outputFolder}/%(uploader)s - %(title)s (via slack-tube).%(ext)s`;
     }
 
     if (isPL || isFullCH) {
         command += isPL ? "--yes-playlist " : "";
-        command += isFullCH ? "--download-archive channel_archive.txt " : ""; // Using an archive file to avoid re-downloads
+        command += isFullCH ? "--download-archive channel_archive.txt " : "";
     }
 
     switch (mode) {
@@ -46,7 +45,7 @@ const ytDlpCommand = (url, mode, quality = '', downloadPath) => {
             if (quality) {
                 videoQuality = `bestvideo[height<=${quality}]+bestaudio/best`;
             }
-            command += `-f "${videoQuality}" --merge-output-format mkv -o "${outputTemplate}" "${url}"`;
+            command += `-f "${videoQuality}" --merge-output-format mp4 -o "${outputTemplate}" "${url}"`;
             break;
         case 'comments':
         case 'chat':
@@ -54,13 +53,12 @@ const ytDlpCommand = (url, mode, quality = '', downloadPath) => {
             break;
     }
 
-    // Remove channel-specific parts if not a full channel download
     if (!isFullCH) {
         command = command.replace(/--download-archive channel_archive\.txt /g, "");
     }
 
     if (disableViaYtDlp === true) {
-        command = command.replace(" (via yt-dlp)", "");
+        command = command.replace(" (via slack-tube)", "");
     }
 
     if (setToTrueToMoveChannelNameToEnd === true) {
@@ -68,23 +66,15 @@ const ytDlpCommand = (url, mode, quality = '', downloadPath) => {
         command = command.replace(".%(ext)s", " - %(uploader)s.%(ext)s");
     }
 
-    // Execute the command directly in the terminal
-    console.log("Executing the following yt-dlp command:\n" + command);
     exec(command, (error, stdout, stderr) => {
         if (error) {
-            console.error(`Error executing command: ${error.message}`);
+            console.error(`Error: ${error.message}`);
             return;
         }
         if (stderr) {
-            console.error(`stderr: ${stderr}`);
+            console.error(stderr);
         }
-        console.log(`stdout:\n${stdout}`);
-        console.log("\x1b[32mDownload completed successfully!\x1b[0m"); // Green success message
-
-        // Pause for 3 seconds before exiting
-        setTimeout(() => {
-            console.log("Exiting in 3 seconds...");
-        }, 3000);
+        console.log(stdout);
     });
 };
 
